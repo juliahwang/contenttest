@@ -17,11 +17,11 @@ import json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
-CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
+CONFIG_SECRET_DIR = os.path.join(BASE_DIR, '.config_secret')
 CONFIG_SECRET_COMMON = os.path.join(CONFIG_SECRET_DIR, 'secret_common.json')
 CONFIG_SECRET_DEBUG = os.path.join(CONFIG_SECRET_DIR, 'secret_debug.json')
 CONFIG_SECRET_DEPLOY = os.path.join(CONFIG_SECRET_DIR, 'secret_deploy.json')
-secret_common_file = json.loads(open(CONFIG_SECRET_DIR).read())
+secret_common_file = json.loads(open(CONFIG_SECRET_COMMON).read())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    ### Custom ###
+    'data'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'testapp.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -74,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'testapp.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -87,6 +90,8 @@ DATABASES = {
     }
 }
 
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
