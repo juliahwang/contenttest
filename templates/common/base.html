@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Data Visualization</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
 </head>
 <body>
-    <p>This is an example of data visualization.</p>
-    <a href="{% url 'data:station_list' %}">자료 리스트</a>
+    <p># 데이터시각화 실험 : 지하철 역별 유임/무임승차</p>
+    <a href="{% url 'data:station_list' %}" class="btn">자료리스트</a>
     {% block content %}
 
 

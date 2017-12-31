@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Data
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def station_list(request):
+    """
+    모든 역정보에 대한 리스트를 제공한다.
+    리스트는 10개 단위로 페이지네이션 하였다.
+    """
     all_station = Data.objects.all()
     paginator = Paginator(all_station, 10)
 
@@ -19,3 +23,15 @@ def station_list(request):
         'stations': stations,
     }
     return render(request, 'data/station_list.html', context)
+
+
+def station_detail(request, station_id):
+    """
+    역명을 클릭하면 해당 역에 대한 정보를 넘겨준다
+    """
+    station_id = Data.objects.filter(station_id=station_id)
+    station = get_object_or_404(Data, pk=station_id)
+    context = {
+        'station': station,
+    }
+    return render(request, 'data/station_detail.html', context)
