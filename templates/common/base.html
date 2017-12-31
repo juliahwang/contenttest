@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,10 @@
 </head>
 <body>
     <p>This is an example of data visualization.</p>
+    <a href="{% url 'data:station_list' %}">자료 리스트</a>
+    {% block content %}
+
+
+    {% endblock %}
 </body>
 </html>

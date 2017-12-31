@@ -2,8 +2,10 @@ from django.db import models
 
 
 # Create your models here.
+
+
 class Data(models.Model):
-    used_date = models.DateTimeField()
+    used_date = models.CharField(max_length=50)
     line_num = models.CharField(max_length=10)
     station_id = models.IntegerField()
     station_name = models.CharField(max_length=30)
@@ -11,4 +13,7 @@ class Data(models.Model):
     paid_off = models.PositiveIntegerField()
     unpaid_on = models.PositiveIntegerField()
     unpaid_off = models.PositiveIntegerField()
-    submit_date = models.DateTimeField()
+    submit_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.station_name
