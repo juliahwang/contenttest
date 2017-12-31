@@ -6,6 +6,7 @@
 test.csv
 test2.csv
 db.sqlite3
+static/js/
 
 ### macOS ###
 *.DS_Store
