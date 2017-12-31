@@ -3,6 +3,9 @@
 ### Custom ###
 .idea/
 .config_secret/
+test.csv
+test2.csv
+db.sqlite3
 
 ### macOS ###
 *.DS_Store
