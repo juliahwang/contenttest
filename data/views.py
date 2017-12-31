@@ -1,3 +1,4 @@
+import simplejson as simplejson
 from django.shortcuts import render, get_object_or_404
 from .models import Data
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -35,3 +36,12 @@ def station_detail(request, station_id):
         'station': station,
     }
     return render(request, 'data/station_detail.html', context)
+
+
+def test_detail(request, station_id):
+    station = get_object_or_404(Data, pk=station_id)
+    js_data = simplejson.dumps(station.get_selected_data())
+    context = {
+        'js_data': js_data,
+    }
+    return render(request, "data/station_detail.html", context)

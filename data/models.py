@@ -17,3 +17,11 @@ class Data(models.Model):
 
     def __str__(self):
         return self.station_name
+
+    def get_selected_data(self):
+        return {
+            "paid_on": self.paid_on,
+            "paid_off": self.paid_off,
+            "unpaid_on": self.unpaid_on,
+            "unpaid_off": self.unpaid_off
+        }
