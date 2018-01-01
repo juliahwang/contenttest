@@ -8,5 +8,6 @@ urlpatterns = [
 
     # 역별 자세한 수치정보를 볼 수 있는 페이지
     # url(r'^(?P<station_id>\d+)/$', views.station_detail, name="station_detail"),
-    url(r'^(?P<station_id>\d+)/$', views.test_detail, name="station_detail"),
+    url(r'^(?P<station_id>\d+)/$', views.station_detail, name="station_detail"),
+    url(r'^(?P<station_id>\w+)/api/$', views.test_detail, name="test_detail"),
 ]

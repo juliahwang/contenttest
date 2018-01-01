@@ -8,11 +8,11 @@
         {% if not stations.has_previous %}
             <a href="{{ request.path }}?page=1" class="btn">처음</a>
         {% else %}
-            <a href="{{ request.path }}?page={{ stations.previous_page_number }}" class="btn">이전({{ stations.previous_page_number }} 페이지)</a>
+            <a href="{{ request.path }}?page={{ stations.previous_page_number }}" class="btn">이전 {{ stations.previous_page_number }} 페이지</a>
         {% endif %}
 
         {% if stations.has_next %}
-            <a href="{{ request.path }}?page={{ stations.next_page_number }}" class="btn">다음({{ stations.next_page_number }}페이지)</a>
+            <a href="{{ request.path }}?page={{ stations.next_page_number }}" class="btn">다음 {{ stations.next_page_number }}페이지</a>
         {% else %}
             <a href="{{ request.path }}?page={{ stations.paginator.num_pages }}" class="btn">끝</a>
         {% endif %}

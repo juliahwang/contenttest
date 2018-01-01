@@ -1,4 +1,4 @@
-import simplejson as simplejson
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Data
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -39,9 +39,10 @@ def station_detail(request, station_id):
 
 
 def test_detail(request, station_id):
-    station = get_object_or_404(Data, pk=station_id)
-    js_data = simplejson.dumps(station.get_selected_data())
-    context = {
-        'js_data': js_data,
-    }
-    return render(request, "data/station_detail.html", context)
+    station = get_object_or_404(Data, station_id=station_id)
+    js_data = station.get_selected_data()
+    print(js_data)
+    data_set = list()
+    for key, value in js_data.items():
+        data_set.append({"label": key, "value": value})
+    return JsonResponse(data_set, safe=False)
